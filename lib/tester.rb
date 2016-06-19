@@ -1,5 +1,11 @@
 require "pro1_tester/version"
+require 'open3'
+require 'rspec'
+require 'yaml'
+
 
 module Pro1Tester
-  # Your code goes here...
+  def run
+    %x(rspec core.rb --color)
+  end
 end
