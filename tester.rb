@@ -2,7 +2,7 @@ require 'open3'
 require 'rspec'
 require 'yaml'
 
-DIST_DIR = "temp"
+DIST_DIR = "tmp"
 DIR_BASE = File.expand_path(File.dirname(__FILE__))
 Dir.mkdir DIST_DIR unless Dir.exists? DIST_DIR
 
