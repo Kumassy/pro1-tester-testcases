@@ -3,21 +3,20 @@ BDD for Pro1
 
 # Overview
 プロ1のテストを自動化するためのスクリプトです。
-テストケースはとりあえず`assignment_09-*.c`用のものが入っています。
+テストを実行するには`testcase.yml`を書く必要がありますが、 https://github.com/Kumassy/pro1-tester-testcases で共有しています。
 
 # How to use...
-**Vagrant** でも使って **CenOS** 環境で動かしましょう。
-Ruby と RSpec のインストールを事前にしておきましょう。
+**Vagrant** でも使って **CentOS** 環境で動かしましょう。
+Ruby のインストールを事前にしておきましょう。
 
+テストスクリプトは **Gem** として配布しているので、次のコマンドでインストールしてください：
 ```
-git clone https://github.com/Kumassy/pro1-tester.git
-cd pro1-tester
+gem install pro1-tester
 ```
 
-同じディレクトリにソースコード (*.c) を置いてください。
+`testcase.yml` をソースコード `*.c` と同じディレクトリに置いてください：
 ```
 .
-├── Dockerfile
 ├── assignment_09-a-01.c
 ├── assignment_09-a-02.c
 ├── assignment_09-a-03.c
@@ -31,11 +30,11 @@ cd pro1-tester
 ├── assignment_09-c-02.c
 ├── assignment_09-d-01.c
 ├── testcase.yml
-└── tester.rb
+└── testcase.default.yml
 ```
 そして
 ```
-rspec tester.rb --color
+pro1-tester
 ```
 を実行するとテスト結果がでます。
 
@@ -50,8 +49,8 @@ docker build -t my-ruby-image .
 
 ## Docker コンテナの実行
 ```
-cd pro1-tester
-docker run -it --rm -v "$PWD":/app/ -w /app/ my-ruby-image rspec tester.rb --color
+cd /path/to/source/and/testcase.yml/
+docker run -it --rm -v "$PWD":/app/ -w /app/ my-ruby-image pro1-tester
 ```
 
 # Writing `testcase.yml`
@@ -95,13 +94,13 @@ docker run -it --rm -v "$PWD":/app/ -w /app/ my-ruby-image rspec tester.rb --col
     - `input` を`|`を使って複数行で書いたときは、最終行も含めそれぞれの行末に`\n`がつきます。
 - 標準出力と`expect`は以下のルールで比較されます
     - 改行の直前にある1文字以上の空白文字を取り除きます
-        - これにより標準出力の行末にスペースが入っていてもいい感じにマッチします。 
+        - これにより標準出力の行末にスペースが入っていてもいい感じにマッチします。
     - 最終行の改行を取り除きます
         - これは`expect`が1行だけで、明示的に`\n`を指定しないときにもマッチするようにするためです。
 
 # My Environment (on Vagrant)
 ```
-cat /etc/redhat-release 
+cat /etc/redhat-release
 CentOS release 6.7 (Final)
 ```
 ```
@@ -118,7 +117,7 @@ Using built-in specs.
 Target: x86_64-redhat-linux
 コンフィグオプション: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-languages=c,c++,objc,obj-c++,java,fortran,ada --enable-java-awt=gtk --disable-dssi --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre --enable-libgcj-multifile --enable-java-maintainer-mode --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --disable-libjava-multilib --with-ppl --with-cloog --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux
 スレッドモデル: posix
-gcc version 4.4.7 20120313 (Red Hat 4.4.7-16) (GCC) 
+gcc version 4.4.7 20120313 (Red Hat 4.4.7-16) (GCC)
 ```
 ```
 docker -v
@@ -126,6 +125,4 @@ Docker version 1.7.1, build 786b29d
 ```
 
 # TODO
-- `Gemfile`かく
-- テストケースのシンタックスみすったときのエラーをまともにする
 - 無限ループするプログラムに対してのタイムアウト処理
