@@ -53,6 +53,7 @@ build-iPhoneSimulator/
 .DS_Store
 *.c
 /**/*.c
+testcase.yml
 /tmp/**/*
 /tmp/*
 /**/tmp/**/*

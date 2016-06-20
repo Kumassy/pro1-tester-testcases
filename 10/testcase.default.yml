@@ -1,0 +1,3 @@
+- target: a-01
+  testcase:
+    - expect: "10!"
