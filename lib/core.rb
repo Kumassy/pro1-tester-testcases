@@ -16,7 +16,7 @@ RSpec.configure do |config|
     /pro1-tester/
   ]
 end
-p ENV
+
 module Pro1Tester
   load_path = []
   load_path << ENV[ENV_KEY]
@@ -27,7 +27,14 @@ module Pro1Tester
   end.first
 
   # tasks = YAML.load_file(File.join(DIR_BASE,"testcase.yml"))
-  tasks = YAML.load_file(yml_path)
+
+  tasks = nil
+  begin
+    tasks = YAML.load_file(yml_path)
+  rescue Psych::SyntaxError => e
+    puts "Syntax Error! : #{e.to_s}"
+    exit(1)
+  end
 
   tasks.each do |task|
     src_file_identifer = task["target"]
