@@ -1,21 +1,43 @@
 require 'open3'
 require 'rspec'
 require 'yaml'
+require 'pro1_tester'
 
-
+RSpec.configure do |config|
+  config.backtrace_exclusion_patterns = [
+    # /\/lib\d*\/ruby\/.*(?!.*pro1-tester).*/,
+    /\/lib\d*\/ruby\//,
+    /gems/,
+    /org\/jruby\//,
+    /bin\//,
+    /lib\/rspec\/(core|expectations|matchers|mocks)/
+  ]
+  config.backtrace_inclusion_patterns = [
+    /pro1-tester/
+  ]
+end
+p ENV
 module Pro1Tester
-  DIST_DIR = "tmp"
-  DIR_BASE = File.expand_path(File.dirname(__FILE__))
-  Dir.mkdir DIST_DIR unless Dir.exists? DIST_DIR
+  load_path = []
+  load_path << ENV[ENV_KEY]
+  load_path << File.join(DIR_PWD, "testcase.yml")
+  load_path << File.join(DIR_PWD, "testcase.default.yml")
+  yml_path = load_path.compact.select do |lp|
+    File.exists? lp
+  end.first
 
-  tasks = YAML.load_file(File.join(DIR_BASE,"testcase.yml"))
+  # tasks = YAML.load_file(File.join(DIR_BASE,"testcase.yml"))
+  tasks = YAML.load_file(yml_path)
+
   tasks.each do |task|
     src_file_identifer = task["target"]
-    src_file = Dir.glob(DIR_BASE + "/*").grep(/#{src_file_identifer}.c/).first
+    src_file = Dir.glob(DIR_PWD + "/*").grep(/#{src_file_identifer}.c/).first
+    # src_file = Dir.glob(DIR_BASE + "/*").grep(/#{src_file_identifer}.c/).first
     # src_path = File.join(DIR_BASE,src_file)
 
     # compile
-    %x(gcc #{src_file} -o #{File.join(DIST_DIR, src_file_identifer)})
+    # %x(gcc #{src_file} -o #{File.join(DIST_DIR, src_file_identifer)})
+    %x(gcc #{src_file} -o #{File.join(DIR_PWD, DIST_DIR, src_file_identifer)})
 
 
     # parse testcases
@@ -23,7 +45,8 @@ module Pro1Tester
       testcases = task["testcase"]
 
       testcases.each do |testcase|
-        Open3.popen3(File.join(DIR_BASE, DIST_DIR, src_file_identifer)) do |stdin, stdout, stderr, wait_thr|
+        # Open3.popen3(File.join(DIR_BASE, DIST_DIR, src_file_identifer)) do |stdin, stdout, stderr, wait_thr|
+        Open3.popen3(File.join(DIR_PWD, DIST_DIR, src_file_identifer)) do |stdin, stdout, stderr, wait_thr|
           if testcase.has_key? "input"
             stdin.write testcase["input"]
             stdin.close

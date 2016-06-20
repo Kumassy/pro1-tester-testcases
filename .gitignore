@@ -9,3 +9,4 @@
 /tmp/
 /*.c
 /.DS_Store
+/*.gem
