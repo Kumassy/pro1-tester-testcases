@@ -50,5 +50,10 @@ build-iPhoneSimulator/
 .rvmrc
 
 # custom
+.DS_Store
 *.c
-/*.c
+/**/*.c
+/tmp/**/*
+/tmp/*
+/**/tmp/**/*
+/**/tmp/*
