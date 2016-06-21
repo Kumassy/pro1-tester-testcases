@@ -1,3 +1,89 @@
 - target: a-01
   testcase:
-    - expect: "10!"
+    - input: "I'm student.\n"
+      expect: "I'm student.\n"
+- target: a-02
+  testcase:
+    - input: "I'm student.\n"
+      expect: "I'm student.(12)\n"
+- target: a-03
+  testcase:
+    - input: "abcdefg\n"
+      expect: "abc\n"
+- target: a-04
+  testcase:
+    - input: |
+        abc
+        abc
+      expect: |
+        input first string :
+        input second string :
+        same.
+    - input: |
+        abc
+        abcd
+      expect: |
+        input first string :
+        input second string :
+        different.
+- target: a-05
+  testcase:
+    - input: |
+        Hello World!
+        3
+      expect: |
+        input string :
+        input key :
+        Khuur#Zruog$
+    - input: |
+        Pro1 is interesting.
+        2
+      expect: |
+        input string :
+        input key :
+        Rtq3"ku"kpvgtguvkpi0
+- target: a-06
+  testcase:
+    - input: |
+        a
+        abc
+        de
+      expect: |
+        input string (1) :
+        input string (2) :
+        input string (3) :
+        max :abc
+    - input: |
+        abcde
+        12345
+        xyz
+      expect: |
+        input string (1) :
+        input string (2) :
+        input string (3) :
+        max :abcde
+- target: a-07
+  testcase:
+    - input: "I'm student.\n"
+      expect: |
+        Length(mystrlen): 13
+        Length(strlen): 13
+- target: b-01
+  testcase:
+    - expect: "abcdef\n"
+- target: b-02
+  testcase:
+    - input: "I'm student.\n"
+      expect: |
+        [IN]I'm student.
+        [REV].tneduts m'l
+- target: c-01
+  testcase:
+    - input: |
+        I'm student.
+        3
+      expect: |
+        Input string:
+        Input repeat time:
+        [ORG]:I'm student.
+        [RPT]:I'm student.I'm student.I'm student.
