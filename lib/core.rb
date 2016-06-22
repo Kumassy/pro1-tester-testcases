@@ -42,6 +42,11 @@ module Pro1Tester
     # src_file = Dir.glob(DIR_BASE + "/*").grep(/#{src_file_identifer}.c/).first
     # src_path = File.join(DIR_BASE,src_file)
 
+    if src_file.nil?
+    	puts "#{src_file_identifer} was not found. skipped."
+    	next
+    end
+
     # compile
     # %x(gcc #{src_file} -o #{File.join(DIST_DIR, src_file_identifer)})
     %x(gcc #{src_file} -o #{File.join(DIR_PWD, DIST_DIR, src_file_identifer)})
