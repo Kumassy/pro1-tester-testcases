@@ -49,7 +49,11 @@ module Pro1Tester
 
     # compile
     # %x(gcc #{src_file} -o #{File.join(DIST_DIR, src_file_identifer)})
-    %x(gcc #{src_file} -o #{File.join(DIR_PWD, DIST_DIR, src_file_identifer)})
+    # %x(gcc #{src_file} -o #{File.join(DIR_PWD, DIST_DIR, src_file_identifer)})
+    unless system(%(gcc #{src_file} -o #{File.join(DIR_PWD, DIST_DIR, src_file_identifer)}))
+      puts "-"*10 + "compile error!!" + "-"*10
+      exit(1)
+    end
 
 
     # parse testcases

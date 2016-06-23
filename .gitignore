@@ -10,3 +10,5 @@
 /*.c
 /.DS_Store
 /*.gem
+/testcase.default.yml
+/testcase.yml
