@@ -8,7 +8,8 @@ module Pro1Tester
   DIST_DIR = "tmp"
   DIR_BASE = File.expand_path(File.dirname(__FILE__))
   DIR_PWD = Dir.pwd
-  ENV_KEY = "PRO1_TESTER_TESTCASE"
+  ENV_KEY_TESTCASE = "PRO1_TESTER_TESTCASE"
+  ENV_KEY_STRICT_MODE = "PRO1_TESTER_STRICT_MODE"
 
   class << self
     def run

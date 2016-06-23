@@ -13,7 +13,10 @@ module Pro1Tester
       exit
     end
     opt.on('-d', "Use default testcase. (testcase.default.yml)") do
-      ENV.store(ENV_KEY,File.join(DIR_PWD, "testcase.default.yml"))
+      ENV.store(ENV_KEY_TESTCASE,File.join(DIR_PWD, "testcase.default.yml"))
+    end
+    opt.on('-s', "Use strict mode. (compare result including LF and spaces)") do
+      ENV.store(ENV_KEY_STRICT_MODE,"on")
     end
     opt.parse!(ARGV)
   end

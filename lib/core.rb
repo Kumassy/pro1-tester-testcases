@@ -19,7 +19,7 @@ end
 
 module Pro1Tester
   load_path = []
-  load_path << ENV[ENV_KEY]
+  load_path << ENV[ENV_KEY_TESTCASE]
   load_path << File.join(DIR_PWD, "testcase.yml")
   load_path << File.join(DIR_PWD, "testcase.default.yml")
   yml_path = load_path.compact.select do |lp|
@@ -82,12 +82,20 @@ module Pro1Tester
           # remove space just in front of LF
           # remove the last LF if exist
           result = testcase["result"]
-          result.gsub!(/\s+\n/, "\n")
-          result.gsub!(/\n$/, "")
-
           expectation = testcase["expect"]
-          expectation.gsub!(/\s+\n/, "\n")
-          expectation.gsub!(/\n$/, "")
+
+          unless ENV[ENV_KEY_STRICT_MODE] == "on"
+            # result.gsub!(/\s+\n/, "\n")
+            # result.gsub!(/\n$/, "")
+            #
+            # expectation.gsub!(/\s+\n/, "\n")
+            # expectation.gsub!(/\n$/, "")
+            result.gsub!(/\s/, "")
+            result.gsub!(/\n/, "")
+
+            expectation.gsub!(/\s/, "")
+            expectation.gsub!(/\n/, "")
+          end
 
           expect(result).to eq expectation
         end
