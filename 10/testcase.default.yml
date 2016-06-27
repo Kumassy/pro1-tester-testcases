@@ -1,15 +1,21 @@
 - target: a-01
   testcase:
-    - input: "I'm student.\n"
-      expect: "I'm student.\n"
+    - input: |
+        I'm student.
+      expect: |
+        I'm student.
 - target: a-02
   testcase:
-    - input: "I'm student.\n"
-      expect: "I'm student.(12)\n"
+    - input: |
+        I'm student.
+      expect: |
+        I'm student.(12)
 - target: a-03
   testcase:
-    - input: "abcdefg\n"
-      expect: "abc\n"
+    - input: |
+        abcdefg
+      expect: |
+        abc
 - target: a-04
   testcase:
     - input: |
@@ -32,16 +38,13 @@
         Hello World!
         3
       expect: |
-        input string :
-        input key :
-        Khuur#Zruog$
+        input string :input key :Khoor#Zruog$
+      # スライドは Khuur#Zruog$
     - input: |
         Pro1 is interesting.
         2
       expect: |
-        input string :
-        input key :
-        Rtq3"ku"kpvgtguvkpi0
+        input string :input key :Rtq3"ku"kpvgtguvkpi0
 - target: a-06
   testcase:
     - input: |
@@ -64,19 +67,22 @@
         max :abcde
 - target: a-07
   testcase:
-    - input: "I'm student.\n"
+    - input: |
+        I'm student.
       expect: |
-        Length(mystrlen): 13
-        Length(strlen): 13
+        Length(mystrlen): 12
+        Length(strlen): 12
 - target: b-01
   testcase:
-    - expect: "abcdef\n"
+    - expect: |
+        abcdef
 - target: b-02
   testcase:
-    - input: "I'm student.\n"
+    - input: |
+        I'm student.
       expect: |
         [IN]I'm student.
-        [REV].tneduts m'l
+        [REV].tneduts m'I
 - target: c-01
   testcase:
     - input: |
