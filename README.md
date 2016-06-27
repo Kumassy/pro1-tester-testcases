@@ -14,6 +14,11 @@ Ruby のインストールを事前にしておきましょう。
 gem install pro1-tester
 ```
 
+KO の Unix などにインストールするときは`--user-install`オプションをつけてください：
+```
+gem install pro1-tester --user-install
+```
+
 `testcase.yml` をソースコード `*.c` と同じディレクトリに置いてください：
 ```
 .
@@ -97,7 +102,7 @@ docker run -it --rm -v "$PWD":/app/ -w /app/ my-ruby-image pro1-tester
 - 標準入力には`input`のパース結果がそのまま渡されます
     - `input` を1行で書いたときは明示的に`\n`を指定しない限り改行コードは渡されません（Enter キー押さないのと同じ）。
     - `input` を`|`を使って複数行で書いたときは、最終行も含めそれぞれの行末に`\n`がつきます。
-    
+
 # My Environment (on Vagrant)
 ```
 cat /etc/redhat-release
