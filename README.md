@@ -2,41 +2,24 @@
 Testcase for pro1-tester
 
 # Overview
-pro1-testerを使うには`testcase.yml`を書く必要がありますが、こちらでデフォルトのテストケースを共有しています。
+https://github.com/Kumassy/pro1-tester 用のテストケースです。
 
-# How to use...
-```
-git clone https://github.com/Kumassy/pro1-tester-testcases
-```
-
-pro1-testerの使い方自体はこちらを参照してください：
-https://github.com/Kumassy/pro1-tester
-
-# Writing `testcase.yml`
-**YAML** の記法で書いていきます。
-基本的に雰囲気で書けばOKです。
-
-- 出力だけ見るプログラムの場合、`input`は省略可能です。
-- `label`は`it`に渡すアレです。省略した場合はデフォルトのラベルが使われます。
-- `input`に特定の文字（`"`とか`\`とか）が含まれるときはエスケープが必要です。
-- `input`の最後に改行が必要で`input`を1行で書くときは、`input`を`""`で囲って最後に`\n`をつけてください。
-- 複数行の文字列を書くときには注意しましょう。
+# Usage
+まずこのリポジトリを clone しましょう：
 
 ```
-- expect: |
-    A(65)  # ここでインデントつける
-    B(66)
-    C(67)
-    D(68)
-    E(69)
+git clone https://github.com/Kumassy/pro1-tester-testcases.git
+```
 
-```
-```
-- expect: |
-  A(65)  # これはシンタックスエラー
-  B(66)
-  C(67)
-  D(68)
-  E(69)
+`pro1-tester` コマンドが使えるか確認します。  
+そして `testcase.default.yml` があるディレクトリにソースコード `*.c` を置いて、`pro1-test` コマンドを実行すると結果が出てきます。
 
-```
+# About `testcase.default.yml`
+こちらのリポジトリにあるのは `testcase.default.yml` です。`pro1-tester`は `testcase.default.yml` と同じディレクトリに `testcase.yml` がある場合はそちらを使用します。
+
+自分でテストケースを書きたいときは `testcase.default.yml` をコピーして `testcase.yml` に書けばOKです。  
+その状態で `testcase.default.yml` を実行したいときは  
+`pro1-tester -d` (d: default) 
+
+# Contributing
+`testcase.yml` とソースコード `*.c` は `.gitignore` に登録してあるのでそのままプルリク送れます。（が、私はプルリクをマージしたことないのでこの辺りのことはあまりわかってません。。。）
