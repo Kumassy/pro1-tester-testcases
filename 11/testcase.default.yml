@@ -1,0 +1,116 @@
+- target: a-01
+  testcase:
+    - input: |
+        3.2 2.4
+        1.2 3.6
+      expect: |
+        input first point (x1 y1):
+        input second point (x2 y2):
+        linear function : y = -0.600000 x + 4.320000
+    - input: |
+        2 4
+        5 1
+      expect: |
+        input first point (x1 y1):
+        input second point (x2 y2):
+        linear function : y = -1.000000 x + 6.000000
+- target: a-02
+  testcase:
+    - input: |
+        1997 7 3
+      expect: |
+        1997/07/03
+    - input: |
+        2016 6 21
+      expect: |
+        2016/06/21
+- target: a-03
+  testcase:
+    - input: |
+
+      expect: |
+        student[61500001] total: 217, average: 72.333336
+        student[61500002] total: 244, average: 81.333336
+        student[61500003] total: 229, average: 76.333336
+- target: a-04
+  testcase:
+    - input: |
+        5 1 8 0 3
+      expect: |
+        input 5 integers:
+        max: 8,min: 0,average: 3.400000
+    - input: |
+        7 -4 12 9 7
+      expect: |
+        input 5 integers:
+        max: 12,min: -4,average: 6.200000
+- target: b-01
+  testcase:
+    - input: |
+        61401234 Tanaka Taro 30.5
+        61402345 Suzuki Jiro 90.0
+        61405678 Sato Hanako 52.0
+        61403355 Kudo Yukiko 10.0
+        -1 foo bar 0.0
+      expect: |
+        Best Student is Suzuki Jiro (90.000000)
+        Worst Student is Kudo Yukiko (10.000000)
+- target: b-02
+  testcase:
+    - input: |
+        2016 6 28
+      expect: |
+        Today is 2016/06/28
+        Tomorrow is 2016/06/29
+    - input: |
+        2020 2 28
+      expect: |
+        Today is 2020/02/28
+        Tomorrow is 2020/02/29
+    - input: |
+        2020 2 29
+      expect: |
+        Today is 2020/02/29
+        Tomorrow is 2020/03/01
+    - input: |
+        2019 2 28
+      expect: |
+        Today is 2019/02/28
+        Tomorrow is 2019/03/01
+    - input: |
+        2016 5 31
+      expect: |
+        Today is 2016/05/31
+        Tomorrow is 2016/06/01
+    - input: |
+        2016 12 31
+      expect: |
+        Today is 2016/12/31
+        Tomorrow is 2017/01/01
+- target: b-03
+  testcase:
+    - input: |
+        0 0 3
+        5 0 2
+      expect: |
+        Input 1st Circle(x, y, r):
+        Input 2nd Circle(x, y, r):
+        Circles have 1 intersect point
+    - input: |
+        0 1 4
+        4 0 2
+      expect: |
+        Input 1st Circle(x, y, r):
+        Input 2nd Circle(x, y, r):
+        Circles have 2 intersect point
+    - input: |
+        0 0 1
+        5 0 2
+      expect: |
+        Input 1st Circle(x, y, r):
+        Input 2nd Circle(x, y, r):
+        Circles have 0 intersect point
+
+
+# We cannot test b-04 and b-05 by pro1-tester
+# This is because we cannot pass EOF from testcase
