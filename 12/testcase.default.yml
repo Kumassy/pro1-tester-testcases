@@ -1,0 +1,106 @@
+- target: a-01
+  testcase:
+    - expect: |
+        test
+
+- target: a-02
+  testcase:
+    - input: |
+        9 8 3 4 2
+      expect: |
+        input 5 numbers:
+        2 4 3 8 9
+- target: a-03
+  testcase:
+    - input: |
+        rin
+        haruka
+        makoto
+        nagisa
+        rei
+      expect: |
+        input 5 names:
+        member list : rin, haruka, makoto, nagisa, rei,
+# we cannnot test a-04 because it print pointer value.
+- target: b-01
+  testcase:
+    - input: |
+        ichiro
+        jiro
+        saburo
+      expect: |
+        input names:
+        member list: ichiro, jiro, saburo,
+    - input: |
+        ken
+        kenta
+        kenichi
+        kenji
+      expect: |
+        input names:
+        member list: ken, kenta, kenichi, kenji,
+- target: b-02
+  testcase:
+    - input: |
+        ai
+        mai
+        maiko
+      expect: |
+        input names:
+        member list : ai, mai, maiko,
+        member list (reverse) : maiko, mai, ai,
+    - input: |
+        taka
+        toshi
+      expect: |
+        input names:
+        member list : taka, toshi,
+        member list (reverse) : toshi, taka,
+- target: b-03
+  testcase:
+    - input: |
+        1 3 4 2 5
+      expect: |
+        1 2 3 4 5
+        5 4 3 2 1
+    - input: |
+        -123 421 10 1 99 32 2006
+      expect: |
+        -123 1 10 32 99 421 2006
+        2006 421 99 32 10 1 -123
+- target: c-01
+  testcase:
+    - input: |
+        dog
+        apple
+        boy
+        cow
+        cat
+      expect: |
+        [ASC]
+        apple
+        boy
+        cat
+        cow
+        dog
+        [DSC]
+        dog
+        cow
+        cat
+        boy
+        apple
+- target: c-02
+  testcase:
+    - input: |
+        2 Sato
+        1 Suzuki
+        3 Kimura
+      expect: |
+        [ID]
+        1 Suzuki
+        2 Sato
+        3 Kimura
+        [NAME]
+        3 Kimura
+        2 Sato
+        1 Suzuki
