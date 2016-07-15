@@ -1,0 +1,94 @@
+- target: a-01
+  testcase:
+    - input: |
+        5
+      expect: |
+        input an integer :
+        1 2 3 4 5
+    - input: |
+        9
+      expect: |
+        input an integer :
+        1 2 3 4 5 6 7 8 9
+- target: a-02
+  testcase:
+    - input: |
+        5 3
+      expect: |
+        input m and n :
+        5 P 3 = 60
+        5 C 3 = 10
+    - input: |
+        8 4
+      expect: |
+        input m and n :
+        8 P 4 = 1680
+        8 C 4 = 70
+- target: a-03
+  testcase:
+    - args: |
+        aiueo 12345
+      expect: |
+        aiueo
+        12345
+    - args: |
+        I am a student.
+      expect: |
+        I
+        am
+        a
+        student.
+- target: a-04
+  testcase:
+    - args: |
+        5
+      expect: |
+        1 2 3 4 5
+    - args: |
+
+      expect: |
+        invalid arguments
+    - args: |
+        5 8
+      expect: |
+        invalid arguments
+- target: b-01
+  testcase:
+    - args: |
+        aaAbbcDd
+      expect: |
+        A(a): 3
+        B(b): 2
+        C(c): 1
+        D(d): 2
+- target: b-02
+  testcase:
+    - args: |
+        10
+      expect: |
+        Fib[10]: 55
+    - args: |
+
+      expect: |
+        Few arguments
+    - args: |
+        20 10
+      expect: |
+        Fib[20]: 6765
+        Fib[10]: 55
+- target: c-01
+  testcase:
+    - args: |
+        32 91 85 73 12
+      expect: |
+        Before: 32 91 85 73 12
+        After: 12 32 73 85 91
+    - args: |
+        4 1 5 7 2 3 9
+      expect: |
+        Before: 4 1 5 7 2 3 9
+        After: 1 2 3 4 5 7 9
+    - args: |
+
+      expect: |
+        Few arguments
